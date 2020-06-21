@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/styles";
 import { useTheme } from "@material-ui/core/styles";
 import Link from "../Link";
-import Grid from "@material-ui/core/Grid";
+
 import Menu from "@material-ui/core/Menu";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import IconButton from "@material-ui/core/IconButton";
@@ -21,7 +21,7 @@ import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from "@material-ui/icons/Menu";
 import Box from "@material-ui/core/Box";
-import ShoppingBasketIcon from "../UI/icons/shoppingBasketIcon";
+import { useSpring, animated } from "react-spring";
 
 import { useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
@@ -152,8 +152,10 @@ const useStyles = makeStyles((theme) => ({
   underline: {
     position: "absolute",
     top: -10,
+    maxWidth: 60,
   },
   shoppingBasketContainer: {
+    marginRight: "2em",
     opacity: 0.8,
     "&:hover": {
       opacity: 1,
@@ -170,12 +172,32 @@ export default function Header(props) {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
+  const [toggleBasketAnim, setToggleBasketAnim] = useState(false);
 
   const basketTotalAmount = useSelector((state) => state.basket.totalAmount);
+
+  useEffect(() => {
+    if (basketTotalAmount > 0) {
+      setToggleBasketAnim(true);
+    }
+  }, [basketTotalAmount]);
+
   const [basketCookie, setBasketCookie] = useState(undefined);
+
+  const { x } = useSpring({
+    from: { x: 0 },
+    x: toggleBasketAnim ? 1 : 0,
+    onRest: () => {
+      // setToggleAnim(false);
+    },
+    reset: true,
+  });
 
   const handleChange = (e, newValue) => {
     props.setTabIndex(newValue);
+  };
+  const handleInitialTab = () => {
+    props.setTabIndex(1);
   };
 
   const handleClick = (e) => {
@@ -215,6 +237,22 @@ export default function Header(props) {
     // },
   ];
 
+  const tabsActions = useRef();
+
+  // useEffect(() => {
+  //   if (tabsActions.current) {
+  //     tabsActions.current.updateIndicator();
+  //     // tabsActions.current.updateIndicator();
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    //workaround to make sure the tab indicato resizes
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent("resize"));
+    }, 1);
+  }, []);
+
   useEffect(() => {
     [...menuOptions, ...routes].forEach((route) => {
       switch (window.location.pathname) {
@@ -246,6 +284,7 @@ export default function Header(props) {
   const tabs = (
     <>
       <Tabs
+        action={tabsActions}
         value={props.tabIndex}
         className={classes.tabContainer}
         onChange={handleChange}
@@ -253,11 +292,13 @@ export default function Header(props) {
         // indicatorColor={'primary'}
         TabIndicatorProps={{
           children: (
-            <img
-              className={classes.underline}
-              alt=""
-              src="/assets/tab-underline.svg"
-            />
+            <div>
+              <img
+                className={classes.underline}
+                alt=""
+                src="/assets/tab-underline.svg"
+              />
+            </div>
           ),
         }}
       >
@@ -283,28 +324,6 @@ export default function Header(props) {
       >
         Order
       </Button> */}
-
-      <Box
-        mr={2}
-        display="flex"
-        alignItems="center"
-        className={classes.shoppingBasketContainer}
-        component={Link}
-        href="/basket"
-      >
-        <Typography
-          style={{ marginRight: 30, marginLeft: 30 }}
-          variant="h5"
-          color="textPrimary"
-        >
-          £{basketTotalAmount}
-        </Typography>
-        <img
-          height={50}
-          alt="shopping basket"
-          src="/assets/shopping-basket1.svg"
-        />
-      </Box>
 
       <Menu
         id="simple-menu"
@@ -449,6 +468,52 @@ export default function Header(props) {
             </Button>
             <Hidden smDown>{tabs}</Hidden>
             <Hidden mdUp>{<Drawer />}</Hidden>
+            <Box
+              display="flex"
+              alignItems="center"
+              className={classes.shoppingBasketContainer}
+              component={Link}
+              href="/basket"
+              onClick={() => {
+                setToggleBasketAnim(!toggleBasketAnim);
+              }}
+            >
+              <Typography
+                style={{
+                  marginRight: 30,
+                  marginLeft: 30,
+                  minWidth: 65,
+                  textAlign: "right",
+                }}
+                variant="h5"
+                color="textPrimary"
+              >
+                {Intl.NumberFormat("en-GB", {
+                  style: "currency",
+                  currency: "GBP",
+                }).format(basketTotalAmount)}
+              </Typography>
+
+              <animated.img
+                style={{
+                  opacity: x.interpolate({
+                    range: [0, 0.5, 1],
+                    output: [0.7, 1, 0.7],
+                  }),
+                  transform: x
+                    .interpolate({
+                      range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
+                      output: [1, 0.97, 0.9, 1.3, 1.4, 1.1, 1.03, 1],
+                    })
+                    .interpolate((x) => `scale(${x})`),
+                  bottom: 5,
+                  position: "relative",
+                }}
+                height={32}
+                alt="shopping basket"
+                src="/assets/shopping-basket1.svg"
+              />
+            </Box>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

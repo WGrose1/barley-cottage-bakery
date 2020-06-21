@@ -24,6 +24,10 @@ export default function MyApp(props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [tabIndex, setTabIndex] = useState(0);
 
+  useEffect(() => {
+    console.log("tabIndex", tabIndex);
+  }, [tabIndex]);
+
   // static async getInitialProps({ Component, ctx }) {
   //     return {
   //       pageProps: {

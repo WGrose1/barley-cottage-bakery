@@ -47,6 +47,10 @@ const theme = createMuiTheme(
         fontSize: "2.5em",
         color: stBlueDark,
       },
+
+      body1: {
+        fontSize: 22,
+      },
       order: {
         fontSize: "1rem",
         textTransform: "none",

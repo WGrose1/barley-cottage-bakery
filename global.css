@@ -30,3 +30,19 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
+.my-node-enter {
+  /* opacity: 0; */
+  transform: scale(1.2);
+}
+.my-node-enter-active {
+  opacity: 1;
+
+  transition: opacity 300ms, transform 300ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 1;
+  transition: opacity 200;
+}

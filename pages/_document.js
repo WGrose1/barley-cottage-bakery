@@ -31,6 +31,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;700&family=Raleway:wght@100;300;500;600;700;900&display=swap"
             rel="stylesheet"
           />
+          {/* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> */}
         </Head>
         <body
           style={{

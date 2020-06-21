@@ -4,15 +4,17 @@ import { makeStyles } from "@material-ui/styles";
 import animationData from "../src/animations/landinganimation/data";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import ButtonArrow from "../src/UI/ButtonArrow";
 import Head from "next/head";
 import TopMargin from "../src/UI/TopMarginIndexPage";
 import { useTheme } from "@material-ui/core/styles";
+import LandingPageButtons from "../src/UI/landingPageButtons";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
-    marginBottom: "20em",
+    marginBottom: "4em",
   },
   animation: {
     maxWidth: "50em",
@@ -76,6 +78,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
   },
+  bakesContainer: {
+    backgroundImage: "url('assets/brownie-landing-page.jpg')",
+    backgroundPosition: "contain",
+  },
 }));
 
 export default function LandingPage(props) {
@@ -99,6 +105,7 @@ export default function LandingPage(props) {
         alt="brownie"
         src="/assets/brownie-landing-page.jpg"
       /> */}
+      {/* SLOGAN CONTAINER START */}
       <Grid container direction="column" className={classes.mainContainer}>
         <Head>
           <title key="title">sweet treated</title>
@@ -137,7 +144,7 @@ export default function LandingPage(props) {
                 alignItems="center"
                 className={classes.buttonContainer}
               >
-                <Grid item>
+                {/* <Grid item>
                   <Button variant="contained" className={classes.orderButton}>
                     order
                   </Button>
@@ -151,7 +158,7 @@ export default function LandingPage(props) {
                       fill={theme.palette.common.darkBlue}
                     />
                   </Button>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
             {/* <Grid sm item className={classes.animation}>
@@ -159,16 +166,17 @@ export default function LandingPage(props) {
             </Grid> */}
             <Grid sm item container className={classes.heroTextRight}>
               <Grid sm item>
-                <Typography variant="h2">asdsad sad psaojdisa</Typography>
+                <Typography variant="h2">
+                  freshly baked from our home to yours
+                </Typography>
               </Grid>
-              <Typography variant="body1">
-                jsajisjisdjio saoisa hsa hds haid sai
-              </Typography>
-              <Typography variant="body2">ahsdkjsahd khd saj d'asj </Typography>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
+      {/* SLOGAN CONTAINER END */}
+
+      <LandingPageButtons />
     </React.Fragment>
   );
 }

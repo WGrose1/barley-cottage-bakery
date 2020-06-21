@@ -19,7 +19,9 @@ const basketReducer = (state = defaultState, action) => {
       const prodTitle = addedProduct.title;
       const addQuantity = action.quantity;
       const addPrice = action.quantity * prodPrice;
-      console.log(addPrice);
+
+      const totalCartAmount =
+        Math.round((state.totalAmount + addPrice).toFixed(2) * 100) / 100;
 
       let updatedOrNewCartItem;
 
@@ -43,7 +45,8 @@ const basketReducer = (state = defaultState, action) => {
         ...state,
         // items: [ ...state.items, {addedProduct.id: {updatedOrNewCartItem ],
         items: { ...state.items, [addedProduct.id]: updatedOrNewCartItem },
-        totalAmount: state.totalAmount + addPrice,
+        totalAmount: totalCartAmount,
+        // totalAmount: state.totalAmount + addPrice,
       };
     case REMOVE_ITEM:
       return { ...state };

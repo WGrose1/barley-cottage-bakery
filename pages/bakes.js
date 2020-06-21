@@ -127,7 +127,7 @@ export default function About() {
         ></link>
       </Head>
       <TopMargin />
-      <Box my={4} mx={3} display="flex" justifyContent="flex-start">
+      <Box my={4} mx={3} display="flex" justifyContent="center">
         <img height={50} src="/assets/doodles/signature_under.svg" />
         <Box mx={2}>
           <Typography variant="h1" component="h1">
