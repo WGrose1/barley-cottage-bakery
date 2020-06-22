@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import asyncValidate from "./asyncValidate";
 import Box from "@material-ui/core/Box";
-
+import validate from "./validateCheckoutForm";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -28,15 +28,15 @@ const styles = (theme) => ({
     overflow: "hidden",
     width: "100%",
     color: "white",
-    fontSize: 24,
+    fontSize: 18,
   },
   textInputOutline: {
     borderColor: "white",
     borderWidth: 1,
-    fontSize: 24,
+    fontSize: 18,
   },
   input: {
-    fontSize: 24,
+    fontSize: 18,
   },
   textField: {
     width: 200,
@@ -49,22 +49,23 @@ const styles = (theme) => ({
   },
 });
 
-const validate = (values) => {
-  const errors = {};
-  const requiredFields = ["firstName", "lastName", "email"];
-  requiredFields.forEach((field) => {
-    if (!values[field]) {
-      errors[field] = "Required";
-    }
-  });
-  if (
-    values.email &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-  ) {
-    errors.email = "Invalid email address";
-  }
-  return errors;
-};
+// const validate = (values) => {
+//   const errors = {};
+//   const requiredFields = ["address1", "postcode", "town_city"];
+//   requiredFields.forEach((field) => {
+//     if (!values[field]) {
+//       errors[field] = "Required";
+//     }
+//   });
+//   if (
+//     values.email &&
+//     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+//   ) {
+//     errors.email = "Invalid email address";
+//   }
+
+//   return errors;
+// };
 
 const renderTextField = ({
   label,
@@ -258,8 +259,9 @@ const AddressForm = (props) => {
           <Button
             variant="contained"
             color="primary"
+            type="submit"
             onClick={() => {
-              props.handleNextPage();
+              // props.handleNextPage();
             }}
             className={classes.button}
           >
@@ -288,7 +290,13 @@ const AddressForm = (props) => {
 };
 
 export default reduxForm({
-  form: "MaterialUiForm", // a unique identifier for this form
+  form: "checkout_form", // a unique identifier for this form
   validate,
-  asyncValidate,
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
 })(withStyles(styles)(AddressForm));
+// export default reduxForm({
+//   form: "MaterialUiForm", // a unique identifier for this form
+//   validate,
+//   asyncValidate,
+// })(withStyles(styles)(AddressForm));

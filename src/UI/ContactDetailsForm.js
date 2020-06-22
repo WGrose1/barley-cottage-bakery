@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, formValueSelector } from "redux-form";
 import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -12,9 +12,10 @@ import Button from "@material-ui/core/Button";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import asyncValidate from "./asyncValidate";
 import Box from "@material-ui/core/Box";
-
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import validate from "./validateCheckoutForm";
 
 const styles = (theme) => ({
   root: {
@@ -28,15 +29,15 @@ const styles = (theme) => ({
     overflow: "hidden",
     width: "100%",
     color: "white",
-    fontSize: 24,
+    fontSize: 18,
   },
   textInputOutline: {
     borderColor: "white",
     borderWidth: 1,
-    fontSize: 24,
+    fontSize: 18,
   },
   input: {
-    fontSize: 24,
+    fontSize: 18,
   },
   textField: {
     width: 200,
@@ -46,22 +47,27 @@ const styles = (theme) => ({
   },
 });
 
-const validate = (values) => {
-  const errors = {};
-  const requiredFields = ["firstName", "lastName", "email"];
-  requiredFields.forEach((field) => {
-    if (!values[field]) {
-      errors[field] = "Required";
-    }
-  });
-  if (
-    values.email &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-  ) {
-    errors.email = "Invalid email address";
-  }
-  return errors;
-};
+// const validate = (values) => {
+//   const errors = {};
+//   console.log("values", values);
+//   try {
+//     const requiredFields = ["firstName", "lastName", "email"];
+//     requiredFields.forEach((field) => {
+//       if (!values[field]) {
+//         errors[field] = "Required";
+//       }
+//     });
+//     if (
+//       values.email &&
+//       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+//     ) {
+//       errors.email = "Invalid email address";
+//     }
+//     console.log("errs", errors);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const renderTextField = ({
   label,
@@ -212,7 +218,6 @@ const ContactDetailsForm = (props) => {
             />
           </Box>
         </Box>
-
         {/* <div>
         <Field name="sex" component={radioButton}>
           <Radio value="male" label="male" />
@@ -238,7 +243,6 @@ const ContactDetailsForm = (props) => {
             }}
           />
         </Box>
-
         <Box mx={0.5}>
           <Field
             name="signup"
@@ -250,9 +254,7 @@ const ContactDetailsForm = (props) => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => {
-              props.handleNextPage();
-            }}
+            type="submit"
             className={classes.button}
           >
             Next
@@ -280,7 +282,14 @@ const ContactDetailsForm = (props) => {
 };
 
 export default reduxForm({
-  form: "MaterialUiForm", // a unique identifier for this form
+  form: "checkout_form", // a unique identifier for this form
   validate,
-  asyncValidate,
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
 })(withStyles(styles)(ContactDetailsForm));
+
+// export default reduxForm({
+//   form: "MaterialUiForm", // a unique identifier for this form
+//   validate,
+//   asyncValidate,
+// })(withStyles(styles)(ContactDetailsForm));

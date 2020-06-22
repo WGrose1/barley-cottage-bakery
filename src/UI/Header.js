@@ -485,7 +485,7 @@ export default function Header(props) {
                   minWidth: 65,
                   textAlign: "right",
                 }}
-                variant="h5"
+                variant="h6"
                 color="textPrimary"
               >
                 {Intl.NumberFormat("en-GB", {

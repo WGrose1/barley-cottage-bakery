@@ -2,27 +2,32 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
+import Link from "../../src/Link";
 
 const images = [
   {
     url: "/assets/brownie-landing-page.jpg",
     title: "Our Bakes",
     width: "50%",
+    path: "/bakes",
   },
   {
     url: "/assets/delivery-stock.jpg",
     title: "Delivery",
     width: "50%",
+    path: "/delivery",
   },
   {
     url: "/assets/brownie-creator-stock.jpg",
     title: "Brownie Builder",
     width: "50%",
+    path: "/browniebuilder",
   },
   {
     url: "/assets/catering-stock.jpg",
     title: "Catering",
     width: "50%",
+    path: "/catering",
   },
 ];
 
@@ -86,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imageTitle: {
     position: "relative",
+    fontSize: 28,
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
       theme.spacing(1) + 6
     }px`,
@@ -108,6 +114,8 @@ export default function ButtonBases() {
     <div className={classes.root}>
       {images.map((image) => (
         <ButtonBase
+          component={Link}
+          href={`${image.path}`}
           focusRipple
           key={image.title}
           className={classes.image}
@@ -125,8 +133,8 @@ export default function ButtonBases() {
           <span className={classes.imageBackdrop} />
           <span className={classes.imageButton}>
             <Typography
-              component="span"
-              variant="h2"
+              component="h2"
+              // variant="h2"
               color="inherit"
               className={classes.imageTitle}
             >

@@ -45,7 +45,6 @@ export default function Basket() {
     );
   });
 
-  console.log(basketItems);
   // useEffect(() => {
   //   switch (currentFormStep) {
   //     case 1:

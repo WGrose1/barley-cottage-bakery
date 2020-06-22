@@ -1,9 +1,13 @@
 import React from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-
+import { Field, reduxForm, formValueSelector } from "redux-form";
 // import CardSection from "./CardSection";
+import { withStyles } from "@material-ui/core/styles";
+import validate from "./validateCheckoutForm";
 
-export default function CheckoutForm() {
+const styles = (theme) => ({});
+
+const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -48,4 +52,11 @@ export default function CheckoutForm() {
       <button disabled={!stripe}>Confirm order</button>
     </form>
   );
-}
+};
+
+export default reduxForm({
+  form: "checkout_form", // a unique identifier for this form
+  validate,
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
+})(withStyles(styles)(CheckoutForm));

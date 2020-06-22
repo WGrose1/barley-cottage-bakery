@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => {
     addToBasketBtn: {
       borderWidth: 1,
       borderColor: "white",
-      fontSize: 20,
+      fontSize: 18,
     },
     bakedItemImage: {
       opacity: 0.7,
@@ -104,7 +104,7 @@ const BakeItem = (props) => {
                 <Typography align="center" variant="body1">
                   {description}
                 </Typography>
-                <Typography variant="h6"> £{price}</Typography>
+                <Typography variant="body1"> £{price}</Typography>
               </Box>
             </Grid>
           </Grid>

@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
   stepLabel: {
     // display: "none",
     fontSize: 20,
+    fontFamily: "Amatic SC, cursive",
   },
   activeLabel: { color: "red" },
   stepIcon: {
@@ -58,6 +59,10 @@ export default function CheckoutStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
+  // let contactDetailsFormRef = React.createRef();
+  // let addressFormRef = React.createRef();
+  // let paymentFormRef = React.createRef();
+
   const steps = getSteps();
 
   const isStepOptional = (step) => {
@@ -73,13 +78,12 @@ export default function CheckoutStepper() {
     return skipped.has(step);
   };
 
-  const handleNext = () => {
+  const handleNext = (e) => {
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
@@ -88,20 +92,18 @@ export default function CheckoutStepper() {
     switch (step) {
       case 0:
         return (
-          <ContactDetailsForm
-            handleBackPage={handleBack}
-            handleNextPage={handleNext}
-          />
+          <ContactDetailsForm onSubmit={handleNext} handleNext={handleNext} />
         );
       case 1:
         return (
           <AddressForm
+            onSubmit={handleNext}
+            handleNext={handleNext}
             handleBackPage={handleBack}
-            handleNextPage={handleNext}
           />
         );
       case 2:
-        return <PaymentForm />;
+        return <PaymentForm handleBackPage={handleBack} />;
       default:
         return "";
     }
@@ -195,6 +197,28 @@ export default function CheckoutStepper() {
             </Typography>
           </div>
         )}
+        {/* <div>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              handleBack();
+            }}
+            className={classes.button}
+          >
+            Back
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            onClick={() => {
+              handleNext();
+            }}
+            className={classes.button}
+          >
+            Next
+          </Button>
+        </div> */}
       </div>
     </div>
   );

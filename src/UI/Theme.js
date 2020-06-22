@@ -3,7 +3,8 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const stBlue = "#bcf4f5";
 const stBlueDark = "#66C6BC";
 const stPink = "#ffb7c3";
-const defaultFont = "Amatic SC";
+const headerFont = "Amatic SC";
+const defaultFont = "Open Sans Condensed";
 
 const theme = createMuiTheme(
   {
@@ -31,7 +32,7 @@ const theme = createMuiTheme(
       danger: "orange",
     },
     typography: {
-      fontFamily: "Amatic SC, cursive",
+      fontFamily: defaultFont,
       tab: {
         fontFamily: "Amatic SC, cursive",
         textTransform: "none",
@@ -39,17 +40,29 @@ const theme = createMuiTheme(
         fontSize: "1.5rem",
       },
       h1: {
-        fontFamily: defaultFont,
+        fontFamily: headerFont,
         fontSize: "4em",
       },
       h2: {
-        fontFamily: defaultFont,
+        fontFamily: headerFont,
         fontSize: "2.5em",
         color: stBlueDark,
       },
+      h3: {
+        fontFamily: headerFont,
+      },
+      h4: {
+        fontFamily: headerFont,
+      },
+      h5: {
+        fontFamily: headerFont,
+      },
+      h6: {
+        fontFamily: headerFont,
+      },
 
       body1: {
-        fontSize: 22,
+        fontSize: 18,
       },
       order: {
         fontSize: "1rem",
