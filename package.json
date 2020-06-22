@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "postbuild": "node scripts/sitemap.js"
+    "start": "next start -p $port",
+    "postbuild": "node scripts/sitemap.js",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@material-ui/core": "^4.10.2",
