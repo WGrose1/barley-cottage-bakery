@@ -31,7 +31,9 @@ const basketReducer = (state = defaultState, action) => {
           state.items[addedProduct.id].quantity + addQuantity,
           prodPrice,
           prodTitle,
-          state.items[addedProduct.id].sum + addPrice
+          Math.round(
+            (state.items[addedProduct.id].sum + addPrice).toFixed(2) * 100
+          ) / 100
         );
       } else {
         updatedOrNewCartItem = new CartItem(
@@ -41,15 +43,66 @@ const basketReducer = (state = defaultState, action) => {
           addPrice
         );
       }
+
+      const newItems = {
+        ...state.items,
+        [addedProduct.id]: updatedOrNewCartItem,
+      };
+
+      // try {
+      //   const serializedState = JSON.stringify(newItems);
+      //   localStorage.setItem("barleyCottageBasket", serializedState);
+      // } catch {
+      //   // ignore write errors
+      // }
+
+      // try {
+      //   const serializedState = totalCartAmount.toString();
+      //   localStorage.setItem("barleyCottageBasketTotal", serializedState);
+      // } catch {
+      //   // ignore write errors
+      // }
+
       return {
         ...state,
         // items: [ ...state.items, {addedProduct.id: {updatedOrNewCartItem ],
-        items: { ...state.items, [addedProduct.id]: updatedOrNewCartItem },
+        // items: { ...state.items, [addedProduct.id]: updatedOrNewCartItem },
+        items: newItems,
         totalAmount: totalCartAmount,
         // totalAmount: state.totalAmount + addPrice,
       };
+
     case REMOVE_ITEM:
-      return { ...state };
+      const selectedCartItem = state.items[action.pid];
+      const currentQty = selectedCartItem.quantity;
+      let updatedCartItems;
+
+      // if (currentQty > 1) {
+      //   // need to reduce it, not erase it
+      //   const updatedCartItem = new CartItem(
+      //     selectedCartItem.quantity - 1,
+      //     selectedCartItem.productPrice,
+      //     selectedCartItem.productTitle,
+      //     selectedCartItem.sum - selectedCartItem.productPrice
+      //   );
+      //   updatedCartItems = { ...state.items, [action.pid]: updatedCartItem };
+      // } else {
+      //   updatedCartItems = { ...state.items };
+      //   delete updatedCartItems[action.pid];
+      // }
+      updatedCartItems = { ...state.items };
+      delete updatedCartItems[action.pid];
+
+      return {
+        ...state,
+        items: updatedCartItems,
+        totalAmount: state.totalAmount - selectedCartItem.sum,
+        totalAmount:
+          Math.round(
+            (state.totalAmount - selectedCartItem.sum).toFixed(2) * 100
+          ) / 100,
+      };
+
     default:
       return { ...state };
   }

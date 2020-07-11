@@ -101,9 +101,11 @@ const BakeItem = (props) => {
                 {title}
               </Typography>
               <Box display="flex" justifyContent="space-between">
-                <Typography align="center" variant="body1">
-                  {description}
-                </Typography>
+                <Box mr={1}>
+                  <Typography align="center" variant="body1">
+                    {description}
+                  </Typography>
+                </Box>
                 <Typography variant="body1"> £{price}</Typography>
               </Box>
             </Grid>

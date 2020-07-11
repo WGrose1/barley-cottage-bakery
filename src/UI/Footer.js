@@ -11,6 +11,7 @@ import { Typography } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: "transparent",
+
     width: "99%",
     zIndex: 1302,
     display: "flex",
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       width: "21em",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "14em",
+      width: "8em",
     },
   },
   mainContainer: {
@@ -69,16 +70,7 @@ export default function Footer(props) {
         {/* <img alt="logo" src="/assets/logo.svg" className={classes.footerLogo} /> */}
         <Grid container item sm justify="center" alignItems="center">
           <Grid item className={classes.gridItem}>
-            <Typography
-              variant="h2"
-              style={{
-                fontFamily: "Fredericka the Great, cursive",
-                fontWeight: "500",
-              }}
-              align="center"
-            >
-              Barley Cottage Bakery
-            </Typography>
+            <img height="100" src="/assets/logo1.svg" />
             <Copyright />
           </Grid>
         </Grid>

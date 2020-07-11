@@ -86,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   logoContainer: {
+    width: 200,
     padding: 20,
     "&:hover": {
       backgroundColor: "transparent",
@@ -152,7 +153,7 @@ const useStyles = makeStyles((theme) => ({
   underline: {
     position: "absolute",
     top: -10,
-    maxWidth: 60,
+    // maxWidth: 60,
   },
   shoppingBasketContainer: {
     marginRight: "2em",
@@ -217,16 +218,19 @@ export default function Header(props) {
   };
 
   const menuOptions = [
-    { name: "catering", link: "/catering", activeIndex: 3, selectedIndex: 0 },
-    { name: "option 1", link: "/1", activeIndex: 3, selectedIndex: 1 },
-    { name: "option 2", link: "/2", activeIndex: 3, selectedIndex: 2 },
-    { name: "option 3", link: "/3", activeIndex: 3, selectedIndex: 3 },
+    { name: "catering", link: "/catering", activeIndex: 5, selectedIndex: 0 },
+    { name: "option 1", link: "/1", activeIndex: 5, selectedIndex: 1 },
+    { name: "option 2", link: "/2", activeIndex: 5, selectedIndex: 2 },
+    { name: "option 3", link: "/3", activeIndex: 5, selectedIndex: 3 },
   ];
 
   const routes = [
     { name: "home", link: "/", activeIndex: 0 },
     { name: "bakes", link: "/bakes", activeIndex: 1 },
-    { name: "about", link: "/about", activeIndex: 2 },
+    { name: "brownie builder", link: "/browniebuilder", activeIndex: 2 },
+    { name: "delivery", link: "/delivery", activeIndex: 3 },
+    { name: "our story", link: "/about", activeIndex: 4 },
+    { name: "catering", link: "/catering", activeIndex: 5 },
     // {
     //   name: "catering",
     //   link: "/catering",
@@ -315,6 +319,62 @@ export default function Header(props) {
             onMouseOver={route.mouseOver}
           />
         ))}
+        <Tab
+          key={`basket_tab`}
+          className={classes.tab}
+          component={Link}
+          href="/basket"
+          label={
+            <Box
+              display="flex"
+              alignItems="center"
+              // className={classes.shoppingBasketContainer}
+
+              // style={{ marginLeft: "auto" }}
+              onClick={() => {
+                props.setTabIndex(undefined);
+                // setToggleBasketAnim(!toggleBasketAnim);
+              }}
+            >
+              <Typography
+                style={{
+                  marginRight: 30,
+                  marginLeft: 30,
+                  // minWidth: 65,
+                  textAlign: "right",
+                }}
+                variant="h6"
+                color="textPrimary"
+              >
+                {Intl.NumberFormat("en-GB", {
+                  style: "currency",
+                  currency: "GBP",
+                }).format(basketTotalAmount)}
+              </Typography>
+
+              <animated.img
+                style={{
+                  opacity: x.interpolate({
+                    range: [0, 0.5, 1],
+                    output: [0.7, 1, 0.7],
+                  }),
+                  transform: x
+                    .interpolate({
+                      range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
+                      output: [1, 0.97, 0.9, 1.3, 1.4, 1.1, 1.03, 1],
+                    })
+                    .interpolate((x) => `scale(${x})`),
+                  bottom: 5,
+                  position: "relative",
+                }}
+                height={32}
+                alt="shopping basket"
+                src="/assets/shopping-basket1.svg"
+              />
+            </Box>
+          }
+          disableRipple
+        />
       </Tabs>
 
       {/* <Button
@@ -344,7 +404,7 @@ export default function Header(props) {
             key={`${option}${index}`}
             onClick={(event) => {
               handleMenuItemClick(event, index);
-              props.setTabIndex(3);
+              // props.setTabIndex(3);
             }}
             component={Link}
             href={option.link}
@@ -360,7 +420,7 @@ export default function Header(props) {
   );
 
   const Drawer = () => (
-    <>
+    <React.Fragment>
       <SwipeableDrawer
         disableScrollLock={true}
         disableBackdropTransition={!iOS}
@@ -400,12 +460,12 @@ export default function Header(props) {
                     : classes.drawerItem
                 }
               >
-                {route.name}{" "}
+                {route.name}
               </ListItemText>
             </ListItem>
           ))}
 
-          <ListItem
+          {/* <ListItem
             divider
             button
             component={Link}
@@ -423,7 +483,7 @@ export default function Header(props) {
             <ListItemText className={classes.drawerItem} disableTypography>
               order
             </ListItemText>
-          </ListItem>
+          </ListItem> */}
         </List>
       </SwipeableDrawer>
       <IconButton
@@ -433,7 +493,7 @@ export default function Header(props) {
       >
         <MenuIcon className={classes.drawerIcon} />
       </IconButton>
-    </>
+    </React.Fragment>
   );
 
   return (
@@ -458,62 +518,67 @@ export default function Header(props) {
                 alt="sweet treated logo"
                 className={classes.logo}
               /> */}
-              <Typography
+              {/* <Typography
                 className={classes.logoHeader}
                 variant="h2"
                 style={{ maxWidth: 250 }}
               >
                 Barley Cottage
-              </Typography>
+              </Typography> */}
+              <img src="/assets/logo1.svg" />
             </Button>
             <Hidden smDown>{tabs}</Hidden>
-            <Hidden mdUp>{<Drawer />}</Hidden>
-            <Box
-              display="flex"
-              alignItems="center"
-              className={classes.shoppingBasketContainer}
-              component={Link}
-              href="/basket"
-              onClick={() => {
-                setToggleBasketAnim(!toggleBasketAnim);
-              }}
-            >
-              <Typography
-                style={{
-                  marginRight: 30,
-                  marginLeft: 30,
-                  minWidth: 65,
-                  textAlign: "right",
+            <Hidden mdUp>
+              <Box
+                display="flex"
+                alignItems="center"
+                className={classes.shoppingBasketContainer}
+                component={Link}
+                href="/basket"
+                // style={{ marginLeft: "auto" }}
+                onClick={() => {
+                  props.setTabIndex(undefined);
+                  // setToggleBasketAnim(!toggleBasketAnim);
                 }}
-                variant="h6"
-                color="textPrimary"
               >
-                {Intl.NumberFormat("en-GB", {
-                  style: "currency",
-                  currency: "GBP",
-                }).format(basketTotalAmount)}
-              </Typography>
+                <Typography
+                  style={{
+                    marginRight: 30,
+                    marginLeft: 30,
+                    minWidth: 65,
+                    textAlign: "right",
+                  }}
+                  variant="h6"
+                  color="textPrimary"
+                >
+                  {Intl.NumberFormat("en-GB", {
+                    style: "currency",
+                    currency: "GBP",
+                  }).format(basketTotalAmount)}
+                </Typography>
 
-              <animated.img
-                style={{
-                  opacity: x.interpolate({
-                    range: [0, 0.5, 1],
-                    output: [0.7, 1, 0.7],
-                  }),
-                  transform: x
-                    .interpolate({
-                      range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
-                      output: [1, 0.97, 0.9, 1.3, 1.4, 1.1, 1.03, 1],
-                    })
-                    .interpolate((x) => `scale(${x})`),
-                  bottom: 5,
-                  position: "relative",
-                }}
-                height={32}
-                alt="shopping basket"
-                src="/assets/shopping-basket1.svg"
-              />
-            </Box>
+                <animated.img
+                  style={{
+                    opacity: x.interpolate({
+                      range: [0, 0.5, 1],
+                      output: [0.7, 1, 0.7],
+                    }),
+                    transform: x
+                      .interpolate({
+                        range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
+                        output: [1, 0.97, 0.9, 1.3, 1.4, 1.1, 1.03, 1],
+                      })
+                      .interpolate((x) => `scale(${x})`),
+                    bottom: 5,
+                    position: "relative",
+                  }}
+                  height={32}
+                  alt="shopping basket"
+                  src="/assets/shopping-basket1.svg"
+                />
+              </Box>
+            </Hidden>
+            <Hidden mdUp>{<Drawer />}</Hidden>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

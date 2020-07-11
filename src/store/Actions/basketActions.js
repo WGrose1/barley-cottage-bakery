@@ -10,6 +10,6 @@ export const addItem = (product, quantity) => {
   };
 };
 
-export const removeItem = () => ({
-  type: REMOVE_ITEM,
-});
+export const removeItem = (productId) => {
+  return { type: REMOVE_ITEM, pid: productId };
+};

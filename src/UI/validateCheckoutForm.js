@@ -1,6 +1,5 @@
 const validate = (values) => {
   const errors = {};
-  console.log("validate");
 
   const requiredFields = [
     "firstName",
@@ -21,7 +20,7 @@ const validate = (values) => {
   ) {
     errors.email = "Invalid email address";
   }
-  console.log(errors);
+  //console.log("errors", errors);
   return errors;
 };
 export default validate;

@@ -15,8 +15,13 @@ import ContactDetailsForm from "../src/UI/ContactDetailsForm";
 import Hidden from "@material-ui/core/Hidden";
 import StepperForm from "../src/UI/CheckoutStepperForm";
 import { Select } from "@material-ui/core";
+import { persistor } from "../src/store/createStore";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  marginLeft: {
+    marginLeft: 150,
+  },
+}));
 
 export default function Basket() {
   const dispatch = useDispatch();
@@ -25,9 +30,14 @@ export default function Basket() {
   const [inCheckout, setInCheckout] = useState(true);
   const [currentFormStep, setCurrentFormStep] = useState(1);
 
-  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const handleCheckoutSubmit = () => {};
+
+  // if (typeof persistor != "undefined") {
+  //   console.log("persistor", persistor);
+  //   persistor.flush();
+  // }
 
   const basketItems = useSelector((state) => {
     const transformedCartItems = [];
@@ -44,6 +54,7 @@ export default function Basket() {
       a.productId > b.productId ? 1 : -1
     );
   });
+  const basketTotal = useSelector((state) => state.basket.totalAmount);
 
   // useEffect(() => {
   //   switch (currentFormStep) {
@@ -62,7 +73,7 @@ export default function Basket() {
   // }, [currentFormStep]);
 
   const shopItems = (
-    <Box mx={3} maxWidth={400} minWidth={260}>
+    <Box mx={0} minWidth={matchesXS ? "90vw" : 400} maxWidth="50%">
       <Grid
         className={classes.mainContainer}
         container
@@ -79,34 +90,82 @@ export default function Basket() {
             alignItems="center"
             justify="space-between"
             spacing={1}
-            wrap="nowrap"
+            wrap="wrap"
+            // style={{ minWidth: matchesXS ? "100%" : 400 }}
           >
-            <Grid item>
-              <Typography align="left" variant="h4" noWrap>
-                {item.productTitle}
-              </Typography>
+            <Grid
+              item
+              container
+              direction="row"
+              justify="space-between"
+              wrap="nowrap"
+              xs={12}
+              sm={8}
+            >
+              <Grid item>
+                <Typography align="left" variant="h5" noWrap>
+                  {item.productTitle}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Box ml={2}>
+                  <Typography align="left" variant="h6" noWrap>
+                    x {item.quantity}
+                  </Typography>
+                </Box>
+              </Grid>
             </Grid>
 
             <Grid
               item
               container
-              direction="row"
+              direction={matchesXS ? "row-reverse" : "row"}
               alignItems="center"
-              justify="flex-end"
-              spacing={1}
+              justify={matchesXS ? "space-between" : "flex-end"}
+              spacing={2}
+              xs={12}
+              sm={4}
+
+              // className={classes.marginLeft}
             >
-              <Grid item>
-                <Typography align="right" variant="h4">
+              <Grid xs sm={6} item>
+                <Typography align="right" variant="h5">
                   £{item.sum}
                 </Typography>
               </Grid>
-              <Grid item onClick={() => {}}>
-                <img height={20} src="/assets/doodles/trolley-remove.svg" />
+
+              <Grid item xs sm={6} onClick={() => {}}>
+                <Button
+                  variant="outlined"
+                  onClick={() => {
+                    dispatch(basketActions.removeItem(item.productId));
+                    if (typeof persistor != "undefined") {
+                      console.log("persistor", persistor);
+                      console.log("state", persistor.getState());
+                    }
+                  }}
+                >
+                  Remove
+                </Button>
+
+                {/* <img height={20} src="/assets/doodles/trolley-remove.svg" /> */}
               </Grid>
             </Grid>
           </Grid>
         ))}
-        <Box display="flex" justifyContent="flex-end"></Box>
+        <Grid
+          item
+          container
+          direction="row"
+          alignItems="center"
+          justify="space-between"
+          spacing={0}
+        >
+          <Typography variant="h5">Total</Typography>
+          <Typography style={{ marginRight: matchesXS ? 0 : 62 }} variant="h5">
+            £{basketTotal}
+          </Typography>
+        </Grid>
       </Grid>
     </Box>
   );
@@ -115,27 +174,36 @@ export default function Basket() {
     <React.Fragment>
       <TopMargin />
 
-      <Grid container justify="space-around" style={{ marginTop: 50 }}>
-        <Grid item>
-          <Box mx={1.5} display="flex">
-            <Box
-              style={{ ...theme.mixins.gutters(), width: "100%" }}
-              display="flex"
-              justify="space-between"
-              justifyContent="space-around"
-              flexDirection="column"
-            >
-              <Typography variant="h1" component="h1">
-                Basket
-              </Typography>
-              <Box mr={6} mb={2}>
-                <img width={100} src="/assets/doodles/underline-hash.svg" />
-              </Box>
+      <Grid
+        container
+        justify="space-around"
+        style={{
+          marginTop: 150,
+          padding: matchesXS ? 20 : 0,
+        }}
+        spacing={10}
+        // alignItems="center"
+        justifyContent="flex-end"
+      >
+        <Grid item xs md={6}>
+          <Box
+            // style={{ ...theme.mixins.gutters(), width: "100%" }}
+            display="flex"
+            justify="space-between"
+            justifyContent="space-between"
+            flexDirection="column"
+          >
+            <Typography variant="h1" component="h1">
+              Basket
+            </Typography>
+            <Box mr={6} mb={2}>
+              <img width={100} src="/assets/doodles/underline-hash.svg" />
             </Box>
           </Box>
+
           {shopItems}
         </Grid>
-        <Grid item>
+        <Grid item xs md={6}>
           <StepperForm />
         </Grid>
       </Grid>

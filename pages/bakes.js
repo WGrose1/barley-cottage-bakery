@@ -85,6 +85,34 @@ export default function About() {
       price: 5.99,
       imageUrl: "./assets/brownieoutlined.png",
     },
+    {
+      id: 1,
+      title: "Milk Chocolate Brownie",
+      description: "our famous dark chocolate brownie",
+      price: 5.99,
+      imageUrl: "./assets/brownieoutlined.png",
+    },
+    {
+      id: 2,
+      title: "Rocky Road Chocolate Brownie",
+      description: "our famous dark chocolate brownie",
+      price: 5.99,
+      imageUrl: "./assets/rocky-road.png",
+    },
+    {
+      id: 3,
+      title: "Orange Chocolate Brownie",
+      description: "our famous dark chocolate brownie",
+      price: 5.99,
+      imageUrl: "./assets/rocky-road.png",
+    },
+    {
+      id: 4,
+      title: "White Chocolate Brownie",
+      description: "our famous dark chocolate brownie",
+      price: 5.99,
+      imageUrl: "./assets/brownieoutlined.png",
+    },
   ];
 
   const shopItems = (
@@ -95,7 +123,9 @@ export default function About() {
       justify="space-between"
     >
       {items.map((item, index) => (
-        <BakeItem key={`${item}${index}`} item={item} />
+        <Grid item xs={12} sm={6} md={4}>
+          <BakeItem key={`${item}${index}`} item={item} />
+        </Grid>
       ))}
     </Grid>
   );

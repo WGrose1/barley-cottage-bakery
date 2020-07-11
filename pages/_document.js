@@ -35,13 +35,14 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap"
             rel="stylesheet"
           />
+
           {/* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> */}
         </Head>
         <body
           style={{
             margin: 0,
             zIndex: -9999,
-            backgroundImage: "url(/assets/blackboard.jpg)",
+            backgroundImage: "url(/assets/bb1.jpg)",
           }}
         >
           <Main />
