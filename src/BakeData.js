@@ -1,0 +1,58 @@
+export default [
+  {
+    id: 1,
+    title: "Milk Chocolate Brownie",
+    description: "our famous dark chocolate brownie",
+    price: 5.99,
+    imageUrl: "./assets/brownieoutlined.png",
+  },
+  {
+    id: 2,
+    title: "Rocky Road Chocolate Brownie",
+    description: "our famous dark chocolate brownie",
+    price: 5.99,
+    imageUrl: "./assets/rocky-road.png",
+  },
+  {
+    id: 3,
+    title: "Orange Chocolate Brownie",
+    description: "our famous dark chocolate brownie",
+    price: 5.99,
+    imageUrl: "./assets/rocky-road.png",
+  },
+  {
+    id: 4,
+    title: "White Chocolate Brownie",
+    description: "our famous dark chocolate brownie",
+    price: 5.99,
+    imageUrl: "./assets/brownieoutlined.png",
+  },
+  {
+    id: 5,
+    title: "Milk Chocolate Brownie",
+    description: "our famous dark chocolate brownie",
+    price: 5.99,
+    imageUrl: "./assets/brownieoutlined.png",
+  },
+  {
+    id: 6,
+    title: "Rocky Road Chocolate Brownie",
+    description: "our famous dark chocolate brownie",
+    price: 5.99,
+    imageUrl: "./assets/rocky-road.png",
+  },
+  {
+    id: 7,
+    title: "Orange Chocolate Brownie",
+    description: "our famous dark chocolate brownie",
+    price: 5.99,
+    imageUrl: "./assets/rocky-road.png",
+  },
+  {
+    id: 8,
+    title: "White Chocolate Brownie",
+    description: "our famous dark chocolate brownie",
+    price: 5.99,
+    imageUrl: "./assets/brownieoutlined.png",
+  },
+];

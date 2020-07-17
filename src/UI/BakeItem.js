@@ -97,7 +97,7 @@ const BakeItem = (props) => {
         >
           <Grid container justify="center" item>
             <Grid item>
-              <Typography align="center" variant="h4">
+              <Typography align="center" variant="h4" noWrap>
                 {title}
               </Typography>
               <Box display="flex" justifyContent="space-between">
@@ -110,44 +110,55 @@ const BakeItem = (props) => {
               </Box>
             </Grid>
           </Grid>
-          <Grid container item justify="space-around" alignItems="center">
-            <Paper variant="outlined" style={{ background: "none" }}>
-              <Box display="flex">
-                <IconButton
-                  className={classes.iconButton}
-                  aria-label="remove"
-                  onClick={() => {
-                    setaddQuatity(addQuantity - 1);
-                  }}
-                >
-                  <RemoveIcon />
-                </IconButton>
-                <InputBase
-                  className={classes.input}
-                  placeholder="1"
-                  style={{ width: 20, textAlign: "center", fontSize: 22 }}
-                  classes={{ input: classes.quantityInput }}
-                  value={addQuantity}
-                  // inputProps={{ "aria-label": "search google maps" }}
-                />
-                <IconButton
-                  className={classes.iconButton}
-                  aria-label="add"
-                  onClick={() => {
-                    setaddQuatity(addQuantity + 1);
-                  }}
-                >
-                  <AddIcon />
-                </IconButton>
-              </Box>
-            </Paper>
-            <Button
-              className={classes.addToBasketBtn}
-              variant="outlined"
-              onClick={handleAddToBasket}
-            >
-              Add to basket
-            </Button>
+          <Grid
+            container
+            item
+            justify="center"
+            alignItems="center"
+            spacing={3}
+            style={{ marginTop: 12 }}
+          >
+            <Grid item>
+              <Paper variant="outlined" style={{ background: "none" }}>
+                <Box display="flex">
+                  <IconButton
+                    className={classes.iconButton}
+                    aria-label="remove"
+                    onClick={() => {
+                      setaddQuatity(addQuantity - 1);
+                    }}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                  <InputBase
+                    className={classes.input}
+                    placeholder="1"
+                    style={{ width: 20, textAlign: "center", fontSize: 22 }}
+                    classes={{ input: classes.quantityInput }}
+                    value={addQuantity}
+                    // inputProps={{ "aria-label": "search google maps" }}
+                  />
+                  <IconButton
+                    className={classes.iconButton}
+                    aria-label="add"
+                    onClick={() => {
+                      setaddQuatity(addQuantity + 1);
+                    }}
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </Box>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Button
+                className={classes.addToBasketBtn}
+                variant="outlined"
+                onClick={handleAddToBasket}
+              >
+                Add to basket
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

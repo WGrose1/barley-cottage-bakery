@@ -1,4 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM } from "../Actions/basketActions";
+import { ADD_ITEM, REMOVE_ITEM, CLEAR_BASKET } from "../Actions/basketActions";
 import CartItem from "../../models/CartItem";
 // const testBasket = [
 //   { name: "Dark Chocolate Brownie", price: 10.99 },
@@ -102,6 +102,9 @@ const basketReducer = (state = defaultState, action) => {
             (state.totalAmount - selectedCartItem.sum).toFixed(2) * 100
           ) / 100,
       };
+
+    case CLEAR_BASKET:
+      return { ...defaultState };
 
     default:
       return { ...state };

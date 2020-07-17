@@ -70,7 +70,9 @@ export default function Footer(props) {
         {/* <img alt="logo" src="/assets/logo.svg" className={classes.footerLogo} /> */}
         <Grid container item sm justify="center" alignItems="center">
           <Grid item className={classes.gridItem}>
-            <img height="100" src="/assets/logo1.svg" />
+            <img height="75" src="/assets/logo1.svg" />
+          </Grid>
+          <Grid item>
             <Copyright />
           </Grid>
         </Grid>
@@ -115,7 +117,7 @@ export default function Footer(props) {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item className={classes.gridItem}>
+            {/* <Grid item className={classes.gridItem}>
               <Grid container direction="column" spacing={1}>
                 <Grid
                   item
@@ -166,7 +168,7 @@ export default function Footer(props) {
                   option 3
                 </Grid>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Hidden>
         <Grid

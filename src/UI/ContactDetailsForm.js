@@ -16,6 +16,8 @@ import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import validate from "./validateCheckoutForm";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 const styles = (theme) => ({
   root: {
@@ -44,6 +46,11 @@ const styles = (theme) => ({
   },
   textFieldAddress: {
     width: 400,
+  },
+  reponsiveInput: {
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
   },
 });
 
@@ -149,11 +156,14 @@ const renderSelectField = ({
 const ContactDetailsForm = (props) => {
   const { handleSubmit, pristine, reset, submitting, classes } = props;
 
+  const theme = useTheme();
+  const matchesMd = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <form onSubmit={handleSubmit}>
       <Box display="flex" flexWrap="wrap" flexDirection="column">
         <Box m={0.5} display="flex" flexWrap="wrap">
-          <Box m={0.5}>
+          <Box m={0.5} className={classes.reponsiveInput}>
             <Field
               name="firstName"
               component={renderTextField}
@@ -169,7 +179,7 @@ const ContactDetailsForm = (props) => {
               }}
             />
           </Box>
-          <Box m={0.5}>
+          <Box m={0.5} className={classes.reponsiveInput}>
             <Field
               // classes={classes}
               name="lastName"
@@ -187,7 +197,7 @@ const ContactDetailsForm = (props) => {
           </Box>
         </Box>
         <Box m={0.5} display="flex" flexWrap="wrap">
-          <Box m={0.5}>
+          <Box m={0.5} className={classes.reponsiveInput}>
             <Field
               name="email"
               component={renderTextField}
@@ -202,7 +212,7 @@ const ContactDetailsForm = (props) => {
               }}
             />
           </Box>
-          <Box m={0.5}>
+          <Box m={0.5} className={classes.reponsiveInput}>
             <Field
               name="telephone"
               component={renderTextField}
@@ -223,10 +233,10 @@ const ContactDetailsForm = (props) => {
           <Radio value="male" label="male" />
         </Field>
       </div> */}
-        <Box m={1}>
+        <Box m={1} className={classes.reponsiveInput}>
           <Field
             name="notes"
-            style={{ width: 415 }}
+            style={{ width: matchesMd ? "80%" : 415, maxWidth: 415 }}
             component={renderTextField}
             label="Additional information"
             multiline
@@ -243,7 +253,7 @@ const ContactDetailsForm = (props) => {
             }}
           />
         </Box>
-        <Box mx={0.5}>
+        <Box mx={0.5} mb={2}>
           <Field
             name="signup"
             component={renderCheckbox}

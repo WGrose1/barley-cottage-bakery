@@ -16,7 +16,7 @@ export default class MyDocument extends Document {
           <meta property="og:image:type" content="image/png"></meta>
           <meta property="og:image:width" content="1200"></meta>
           <meta property="og:image:height" content="630"></meta>
-          <meta property="og:image:alt" content="sweet treated logo"></meta>
+          <meta property="og:image:alt" content="Barley Cottage Bakery logo"></meta>
           <link rel="icon" href="/favicon.png" />
 
           <link

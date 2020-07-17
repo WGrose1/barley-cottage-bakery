@@ -30,7 +30,7 @@ export default function Delivery() {
   return (
     <React.Fragment>
       <Head>
-        <title key="title">catering | sweet treated</title>
+        <title key="title">catering | Barley Cottage Bakery</title>
         <meta
           name="description"
           key="description="
@@ -40,17 +40,17 @@ export default function Delivery() {
         <meta
           property="og:title"
           key="og:title"
-          content="Title for sharing link here | sweet treated"
+          content="Title for sharing link here | Barley Cottage Bakery"
         />
         <meta
           property="og:url"
           key="og:url"
-          content="sweettreated.co.uk/catering"
+          content="barleycottage.co.uk/catering"
         />
         <link
           rel="canonical"
           key="canonical"
-          href="https://sweettreated.com/catering"
+          href="https://barleycottage.co.uk/catering"
         ></link>
       </Head>
       <TopMargin />

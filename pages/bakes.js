@@ -19,11 +19,25 @@ import TopMargin from "../src/UI/TopMargin";
 import { makeStyles } from "@material-ui/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import TextField from "@material-ui/core/TextField";
+import bakeItems from "../src/BakeData";
+
+export async function getStaticProps(context) {
+  return {
+    props: { test: process.env.DB_HOST }, // will be passed to the page component as props
+  };
+}
+
+// export const getStaticProps = async () => {
+//   console.log(process.env.DB_HOST);
+// };
 
 const useStyles = makeStyles((theme) => {
   return {
     mainContainer: {
       margin: 50,
+      [theme.breakpoints.down("md")]: {
+        margin: 0,
+      },
       width: "90%",
     },
     gridItem: {
@@ -52,68 +66,69 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-export default function About() {
+export default function Bakes(props) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
-  const items = [
-    {
-      id: 1,
-      title: "Milk Chocolate Brownie",
-      description: "our famous dark chocolate brownie",
-      price: 5.99,
-      imageUrl: "./assets/brownieoutlined.png",
-    },
-    {
-      id: 2,
-      title: "Rocky Road Chocolate Brownie",
-      description: "our famous dark chocolate brownie",
-      price: 5.99,
-      imageUrl: "./assets/rocky-road.png",
-    },
-    {
-      id: 3,
-      title: "Orange Chocolate Brownie",
-      description: "our famous dark chocolate brownie",
-      price: 5.99,
-      imageUrl: "./assets/rocky-road.png",
-    },
-    {
-      id: 4,
-      title: "White Chocolate Brownie",
-      description: "our famous dark chocolate brownie",
-      price: 5.99,
-      imageUrl: "./assets/brownieoutlined.png",
-    },
-    {
-      id: 1,
-      title: "Milk Chocolate Brownie",
-      description: "our famous dark chocolate brownie",
-      price: 5.99,
-      imageUrl: "./assets/brownieoutlined.png",
-    },
-    {
-      id: 2,
-      title: "Rocky Road Chocolate Brownie",
-      description: "our famous dark chocolate brownie",
-      price: 5.99,
-      imageUrl: "./assets/rocky-road.png",
-    },
-    {
-      id: 3,
-      title: "Orange Chocolate Brownie",
-      description: "our famous dark chocolate brownie",
-      price: 5.99,
-      imageUrl: "./assets/rocky-road.png",
-    },
-    {
-      id: 4,
-      title: "White Chocolate Brownie",
-      description: "our famous dark chocolate brownie",
-      price: 5.99,
-      imageUrl: "./assets/brownieoutlined.png",
-    },
-  ];
+
+  // const bakeItems = [
+  //   {
+  //     id: 1,
+  //     title: "Milk Chocolate Brownie",
+  //     description: "our famous dark chocolate brownie",
+  //     price: 5.99,
+  //     imageUrl: "./assets/brownieoutlined.png",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Rocky Road Chocolate Brownie",
+  //     description: "our famous dark chocolate brownie",
+  //     price: 5.99,
+  //     imageUrl: "./assets/rocky-road.png",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Orange Chocolate Brownie",
+  //     description: "our famous dark chocolate brownie",
+  //     price: 5.99,
+  //     imageUrl: "./assets/rocky-road.png",
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "White Chocolate Brownie",
+  //     description: "our famous dark chocolate brownie",
+  //     price: 5.99,
+  //     imageUrl: "./assets/brownieoutlined.png",
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "Milk Chocolate Brownie",
+  //     description: "our famous dark chocolate brownie",
+  //     price: 5.99,
+  //     imageUrl: "./assets/brownieoutlined.png",
+  //   },
+  //   {
+  //     id: 6,
+  //     title: "Rocky Road Chocolate Brownie",
+  //     description: "our famous dark chocolate brownie",
+  //     price: 5.99,
+  //     imageUrl: "./assets/rocky-road.png",
+  //   },
+  //   {
+  //     id: 7,
+  //     title: "Orange Chocolate Brownie",
+  //     description: "our famous dark chocolate brownie",
+  //     price: 5.99,
+  //     imageUrl: "./assets/rocky-road.png",
+  //   },
+  //   {
+  //     id: 8,
+  //     title: "White Chocolate Brownie",
+  //     description: "our famous dark chocolate brownie",
+  //     price: 5.99,
+  //     imageUrl: "./assets/brownieoutlined.png",
+  //   },
+  // ];
 
   const shopItems = (
     <Grid
@@ -122,7 +137,7 @@ export default function About() {
       direction="row"
       justify="space-between"
     >
-      {items.map((item, index) => (
+      {bakeItems.map((item, index) => (
         <Grid item xs={12} sm={6} md={4}>
           <BakeItem key={`${item}${index}`} item={item} />
         </Grid>
@@ -133,7 +148,7 @@ export default function About() {
   return (
     <React.Fragment>
       <Head>
-        <title key="title">our bakes | sweet treated</title>
+        <title key="title">our bakes | Barley Cottage Bakery</title>
         <meta
           name="description"
           key="description="
@@ -143,7 +158,7 @@ export default function About() {
         <meta
           property="og:title"
           key="og:title"
-          content="Title for sharing link here | sweet treated"
+          content="Title for sharing link here | Barley Cottage Bakery"
         />
         <meta
           property="og:url"

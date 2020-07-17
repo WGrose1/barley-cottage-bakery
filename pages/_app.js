@@ -10,6 +10,8 @@ import { store, persistor } from "../src/store/createStore";
 // import initStore from "../src/store/createStore";
 import { Provider } from "react-redux";
 import "../global.css";
+// import "../src/firebase/firebase";
+import { firebase } from "../src/firebase/firebase";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { PersistGate } from "redux-persist/integration/react";
@@ -56,7 +58,7 @@ export default function MyApp(props) {
         <CookiesProvider>
           <Elements stripe={stripePromise}>
             <Head>
-              <title>sweet treated</title>
+              <title>Barley Cottage Bakery</title>
               <meta
                 name="viewport"
                 content="minimum-scale=1, initial-scale=1, width=device-width"

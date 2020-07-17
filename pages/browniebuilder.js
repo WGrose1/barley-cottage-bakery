@@ -30,7 +30,7 @@ export default function BrownieBuilderPage() {
   return (
     <React.Fragment>
       <Head>
-        <title key="title">catering | sweet treated</title>
+        <title key="title">catering | Barley Cottage Bakery</title>
         <meta
           name="description"
           key="description="
@@ -40,7 +40,7 @@ export default function BrownieBuilderPage() {
         <meta
           property="og:title"
           key="og:title"
-          content="Title for sharing link here | sweet treated"
+          content="Title for sharing link here | Barley Cottage Bakery"
         />
         <meta
           property="og:url"

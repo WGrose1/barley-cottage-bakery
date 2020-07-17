@@ -86,8 +86,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   logoContainer: {
-    width: 200,
-    padding: 20,
+    // width: 200,
+    height: "fit-content",
+    padding: 0,
     "&:hover": {
       backgroundColor: "transparent",
     },
@@ -179,17 +180,24 @@ export default function Header(props) {
 
   useEffect(() => {
     if (basketTotalAmount > 0) {
+      console.log("animating");
       setToggleBasketAnim(true);
     }
   }, [basketTotalAmount]);
+
+  useEffect(() => {
+    console.log("toggleBasketAnim", toggleBasketAnim);
+  });
 
   const [basketCookie, setBasketCookie] = useState(undefined);
 
   const { x } = useSpring({
     from: { x: 0 },
-    x: toggleBasketAnim ? 1 : 0,
-    onRest: () => {
-      // setToggleAnim(false);
+    x: toggleBasketAnim === true ? 1 : 0,
+    onRest: (val) => {
+      setTimeout(() => {
+        setToggleBasketAnim(false);
+      }, 1500);
     },
     reset: true,
   });
@@ -338,8 +346,8 @@ export default function Header(props) {
             >
               <Typography
                 style={{
-                  marginRight: 30,
-                  marginLeft: 30,
+                  marginRight: 1,
+                  marginLeft: 1,
                   // minWidth: 65,
                   textAlign: "right",
                 }}
@@ -506,32 +514,34 @@ export default function Header(props) {
           classes={{ colorInherit: classes.appbarColor }}
         >
           <Toolbar disableGutters>
-            <Button
-              component={Link}
-              href="/"
-              className={classes.logoContainer}
-              onClick={() => props.setTabIndex(0)}
-              disableRipple
-            >
-              {/* <img
+            <Box m={2}>
+              <Button
+                component={Link}
+                href="/"
+                className={classes.logoContainer}
+                onClick={() => props.setTabIndex(0)}
+                disableRipple
+              >
+                {/* <img
                 src="/assets/logo.svg"
-                alt="sweet treated logo"
+                alt="Barley Cottage Bakery logo"
                 className={classes.logo}
               /> */}
-              {/* <Typography
+                {/* <Typography
                 className={classes.logoHeader}
                 variant="h2"
                 style={{ maxWidth: 250 }}
               >
                 Barley Cottage
               </Typography> */}
-              <img src="/assets/logo1.svg" />
-            </Button>
+                <img width={70} src="/assets/logo1.svg" />
+              </Button>
+            </Box>
             <Hidden smDown>{tabs}</Hidden>
             <Hidden mdUp>
               <Box
                 display="flex"
-                alignItems="center"
+                alignItems="flex-end"
                 className={classes.shoppingBasketContainer}
                 component={Link}
                 href="/basket"
@@ -543,9 +553,9 @@ export default function Header(props) {
               >
                 <Typography
                   style={{
-                    marginRight: 30,
-                    marginLeft: 30,
-                    minWidth: 65,
+                    marginRight: 5,
+                    marginLeft: 5,
+                    minWidth: 25,
                     textAlign: "right",
                   }}
                   variant="h6"

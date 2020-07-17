@@ -108,11 +108,11 @@ export default function LandingPage(props) {
       {/* SLOGAN CONTAINER START */}
       <Grid container direction="column" className={classes.mainContainer}>
         <Head>
-          <title key="title">sweet treated</title>
+          <title key="title">Barley Cottage Bakery</title>
           <meta
             property="og:title"
             key="og:title"
-            content="Title for sharing link here | sweet treated"
+            content="Title for sharing link here | Barley Cottage Bakery"
           ></meta>
           <meta
             property="og:url"
@@ -191,7 +191,7 @@ export default function LandingPage(props) {
 //     >
 //       <Grid xs item className={classes.heroTextContainer}>
 //         <Typography align="center" variant="h1">
-//           sweet treated slogan <br /> line 2
+//           Barley Cottage Bakery slogan <br /> line 2
 //         </Typography>
 //         <Grid
 //           container

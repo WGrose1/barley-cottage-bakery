@@ -32,6 +32,8 @@ export default function Basket() {
 
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
+  const matchesMd = useMediaQuery(theme.breakpoints.down("md"));
+
   const handleCheckoutSubmit = () => {};
 
   // if (typeof persistor != "undefined") {
@@ -73,7 +75,11 @@ export default function Basket() {
   // }, [currentFormStep]);
 
   const shopItems = (
-    <Box mx={0} minWidth={matchesXS ? "90vw" : 400} maxWidth="50%">
+    <Box
+      mx={0}
+      width={matchesXS ? "90vw" : "100%"}
+      maxWidth={matchesXS ? 200 : 400}
+    >
       <Grid
         className={classes.mainContainer}
         container
@@ -97,19 +103,21 @@ export default function Basket() {
               item
               container
               direction="row"
-              justify="space-between"
+              justify={matchesMd ? "space-between" : "space-between"}
               wrap="nowrap"
               xs={12}
-              sm={8}
+              md={8}
             >
               <Grid item>
-                <Typography align="left" variant="h5" noWrap>
-                  {item.productTitle}
-                </Typography>
+                <Box mr={4}>
+                  <Typography align="left" variant="h5" noWrap>
+                    {item.productTitle}
+                  </Typography>
+                </Box>
               </Grid>
               <Grid item>
-                <Box ml={2}>
-                  <Typography align="left" variant="h6" noWrap>
+                <Box mr={2}>
+                  <Typography align="left" variant="h6" noWrap align="right">
                     x {item.quantity}
                   </Typography>
                 </Box>
@@ -119,24 +127,22 @@ export default function Basket() {
             <Grid
               item
               container
-              direction={matchesXS ? "row-reverse" : "row"}
+              // direction={matchesXS ? "row-reverse" : "row"}
+              direction="row"
               alignItems="center"
-              justify={matchesXS ? "space-between" : "flex-end"}
-              spacing={2}
+              justify={matchesMd ? "space-between" : "space-between"}
+              spacing={0}
               xs={12}
-              sm={4}
+              md={4}
+              noWrap
+              // justify={matchesMd ? "flex-start" : "space-between"}
 
               // className={classes.marginLeft}
             >
-              <Grid xs sm={6} item>
-                <Typography align="right" variant="h5">
-                  £{item.sum}
-                </Typography>
-              </Grid>
-
-              <Grid item xs sm={6} onClick={() => {}}>
+              <Grid item>
                 <Button
                   variant="outlined"
+                  style={{ zmarginLeft: 50 }}
                   onClick={() => {
                     dispatch(basketActions.removeItem(item.productId));
                     if (typeof persistor != "undefined") {
@@ -150,6 +156,13 @@ export default function Basket() {
 
                 {/* <img height={20} src="/assets/doodles/trolley-remove.svg" /> */}
               </Grid>
+              <Grid item>
+                <Box ml={2}>
+                  <Typography align="right" variant="h5">
+                    £{item.sum}
+                  </Typography>
+                </Box>
+              </Grid>
             </Grid>
           </Grid>
         ))}
@@ -162,7 +175,7 @@ export default function Basket() {
           spacing={0}
         >
           <Typography variant="h5">Total</Typography>
-          <Typography style={{ marginRight: matchesXS ? 0 : 62 }} variant="h5">
+          <Typography style={{ zmarginRight: matchesXS ? 0 : 72 }} variant="h5">
             £{basketTotal}
           </Typography>
         </Grid>
@@ -181,9 +194,8 @@ export default function Basket() {
           marginTop: 150,
           padding: matchesXS ? 20 : 0,
         }}
-        spacing={10}
+        spacing={0}
         // alignItems="center"
-        justifyContent="flex-end"
       >
         <Grid item xs md={6}>
           <Box
@@ -192,6 +204,7 @@ export default function Basket() {
             justify="space-between"
             justifyContent="space-between"
             flexDirection="column"
+            style={{ padding: matchesXS ? 0 : 25 }}
           >
             <Typography variant="h1" component="h1">
               Basket
@@ -199,12 +212,19 @@ export default function Basket() {
             <Box mr={6} mb={2}>
               <img width={100} src="/assets/doodles/underline-hash.svg" />
             </Box>
-          </Box>
 
-          {shopItems}
+            {shopItems}
+          </Box>
         </Grid>
-        <Grid item xs md={6}>
-          <StepperForm />
+        <Grid item xs sm md={6}>
+          <Box
+            style={{
+              padding: matchesXS ? 0 : 25,
+              marginTop: matchesXS ? 25 : 0,
+            }}
+          >
+            <StepperForm />
+          </Box>
         </Grid>
       </Grid>
     </React.Fragment>

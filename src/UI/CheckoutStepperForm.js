@@ -37,6 +37,10 @@ const useStyles = makeStyles((theme) => ({
   stepIcon: {
     height: 35,
     width: 35,
+    [theme.breakpoints.down("sm")]: {
+      height: 25,
+      width: 25,
+    },
   },
   labelContainer: {},
   iconContainer: { padding: 5 },

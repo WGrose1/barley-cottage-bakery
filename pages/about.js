@@ -30,7 +30,7 @@ export default function About() {
   return (
     <React.Fragment>
       <Head>
-        <title key="title">our bakes | sweet treated</title>
+        <title key="title">our bakes | Barley Cottage Bakery</title>
         <meta
           name="description"
           key="description="
@@ -40,7 +40,7 @@ export default function About() {
         <meta
           property="og:title"
           key="og:title"
-          content="Title for sharing link here | sweet treated"
+          content="Title for sharing link here | Barley Cottage Bakery"
         />
         <meta
           property="og:url"
