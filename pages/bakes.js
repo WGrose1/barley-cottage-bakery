@@ -21,12 +21,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import TextField from "@material-ui/core/TextField";
 import bakeItems from "../src/BakeData";
 
-export async function getStaticProps(context) {
-  return {
-    props: { test: process.env.DB_HOST }, // will be passed to the page component as props
-  };
-}
-
 // export const getStaticProps = async () => {
 //   console.log(process.env.DB_HOST);
 // };

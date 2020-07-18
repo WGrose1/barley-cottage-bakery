@@ -24,8 +24,6 @@ if (!isClient) {
     measurementId: process.env.FIREBASE_MEASUREMENT_ID,
   };
 
-  console.log("here", firebaseConfig);
-  console.log("here2", firebase.apps.length);
   if (!firebase.apps.length) {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);

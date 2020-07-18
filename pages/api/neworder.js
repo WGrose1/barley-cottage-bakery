@@ -21,7 +21,7 @@ export default async (req, res) => {
       // );
       orderReference = ref.key;
       console.log("New Order", ref.key);
-      sendOrderConfirmationEmail("Will", "Grose", "sdsa", req.body.newOrder);
+      // sendOrderConfirmationEmail("Will", "Grose", "sdsa", req.body.newOrder);
     });
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
