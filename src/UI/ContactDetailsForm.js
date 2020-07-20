@@ -48,7 +48,7 @@ const styles = (theme) => ({
     width: 400,
   },
   reponsiveInput: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       width: "100%",
     },
   },
@@ -260,7 +260,7 @@ const ContactDetailsForm = (props) => {
             label="sign up to our email newsletter containing exciting information and promotional discounts?"
           />
         </Box>
-        <div>
+        <Box display="flex" justifyContent="flex-end">
           <Button
             variant="contained"
             color="primary"
@@ -269,7 +269,7 @@ const ContactDetailsForm = (props) => {
           >
             Next
           </Button>
-        </div>
+        </Box>
 
         {/* <Button
           variant="contained"

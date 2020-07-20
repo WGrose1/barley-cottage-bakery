@@ -245,45 +245,27 @@ const AddressForm = (props) => {
         </Box>
       </Box>
 
-      <Box>
-        <div>
-          <Button
-            variant="outlined"
-            onClick={() => {
-              props.handleBackPage();
-            }}
-            className={classes.button}
-          >
-            Back
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            onClick={() => {
-              // props.handleNextPage();
-            }}
-            className={classes.button}
-          >
-            Next
-          </Button>
-        </div>
-
-        {/* <Button
-          variant="contained"
-          type="submit"
-          disabled={pristine || submitting}
-          style={{ width: 100, fontSize: 20 }}
+      <Box display="flex" justifyContent="space-between" width="100%">
+        <Button
+          variant="outlined"
+          onClick={() => {
+            props.handleBackPage();
+          }}
+          className={classes.button}
         >
-          Payment
-        </Button> */}
-        {/* <button
-              type="button"
-              disabled={pristine || submitting}
-              onClick={reset}
-            >
-              Clear Values
-            </button> */}
+          Back
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          onClick={() => {
+            // props.handleNextPage();
+          }}
+          className={classes.button}
+        >
+          Next
+        </Button>
       </Box>
     </form>
   );

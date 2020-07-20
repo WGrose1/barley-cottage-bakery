@@ -12,9 +12,11 @@ import * as basketActions from "../store/Actions/basketActions";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
-const styles = (theme) => ({});
+const styles = (theme) => ({
+  button: {},
+});
 
-const CheckoutForm = () => {
+const PaymentForm = (props) => {
   const [processingPayment, setProcessingPayment] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
   const dispatch = useDispatch();
@@ -120,14 +122,30 @@ const CheckoutForm = () => {
         {processingPayment ? (
           <CircularProgress />
         ) : (
-          <Button
-            type="submit"
-            variant="outlined"
-            disabled={!stripe || basketTotal < 1}
-            style={{ marginTop: 50 }}
+          <Box
+            mt={8}
+            display="flex"
+            justifyContent="space-between"
+            width="100%"
           >
-            Confirm order
-          </Button>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                props.handleBackPage();
+              }}
+              className={props.classes.button}
+            >
+              Back
+            </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              disabled={!stripe || basketTotal < 1}
+            >
+              Confirm order
+            </Button>
+          </Box>
         )}
       </Box>
     </form>
@@ -139,4 +157,4 @@ export default reduxForm({
   validate,
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-})(withStyles(styles)(CheckoutForm));
+})(withStyles(styles)(PaymentForm));

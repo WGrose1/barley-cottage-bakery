@@ -13,6 +13,9 @@ import PaymentForm from "../UI/PaymentForm";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      width: "50%",
+    },
   },
   button: {
     marginRight: theme.spacing(1),

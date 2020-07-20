@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuItem: {
     ...theme.typography.tab,
-    opacity: 0.8,
+    opacity: 0.9,
     "&:hover": {
       opacity: 1,
     },
@@ -127,7 +127,8 @@ const useStyles = makeStyles((theme) => ({
   drawerItem: {
     ...theme.typography.tab,
     color: "black",
-    opacity: "0.9",
+    opacity: "1",
+    // opacity: "0.9",
   },
   drawerItemOrder: {
     backgroundColor: theme.palette.primary.light,
@@ -157,6 +158,7 @@ const useStyles = makeStyles((theme) => ({
     // maxWidth: 60,
   },
   shoppingBasketContainer: {
+    marginLeft: "auto",
     marginRight: "2em",
     opacity: 0.8,
     "&:hover": {
@@ -170,6 +172,7 @@ export default function Header(props) {
   const theme = useTheme();
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  const mediumUp = useMediaQuery(theme.breakpoints.up("md"));
 
   const [openDrawer, setOpenDrawer] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -236,9 +239,9 @@ export default function Header(props) {
     { name: "home", link: "/", activeIndex: 0 },
     { name: "bakes", link: "/bakes", activeIndex: 1 },
     { name: "brownie builder", link: "/browniebuilder", activeIndex: 2 },
-    { name: "delivery", link: "/delivery", activeIndex: 3 },
-    { name: "our story", link: "/about", activeIndex: 4 },
-    { name: "catering", link: "/catering", activeIndex: 5 },
+    // { name: "delivery", link: "/delivery", activeIndex: 3 },
+    // { name: "our story", link: "/about", activeIndex: 4 },
+    // { name: "catering", link: "/catering", activeIndex: 5 },
     // {
     //   name: "catering",
     //   link: "/catering",
@@ -362,6 +365,7 @@ export default function Header(props) {
 
               <animated.img
                 style={{
+                  marginLeft: 25,
                   opacity: x.interpolate({
                     range: [0, 0.5, 1],
                     output: [0.7, 1, 0.7],
@@ -534,7 +538,7 @@ export default function Header(props) {
               >
                 Barley Cottage
               </Typography> */}
-                <img width={70} src="/assets/logo1.svg" />
+                <img width={mediumUp ? 150 : 70} src="/assets/logo1.svg" />
               </Button>
             </Box>
             <Hidden smDown>{tabs}</Hidden>
@@ -553,8 +557,8 @@ export default function Header(props) {
               >
                 <Typography
                   style={{
-                    marginRight: 5,
-                    marginLeft: 5,
+                    marginRight: 25,
+
                     minWidth: 25,
                     textAlign: "right",
                   }}

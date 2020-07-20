@@ -106,28 +106,28 @@ export default function LandingPage(props) {
         src="/assets/brownie-landing-page.jpg"
       /> */}
       {/* SLOGAN CONTAINER START */}
-      <Grid container direction="column" className={classes.mainContainer}>
-        <Head>
-          <title key="title">Barley Cottage Bakery</title>
-          <meta
-            property="og:title"
-            key="og:title"
-            content="Title for sharing link here | Barley Cottage Bakery"
-          ></meta>
-          <meta
-            property="og:url"
-            key="og:url"
-            content="sweettreated.co.uk"
-          ></meta>
-          {/* ensures http https and www all point to one page for SEO */}
-          <link
-            rel="canonical"
-            key="canonical"
-            href="https://sweettreated.com"
-          ></link>
-        </Head>
+      {/* <Grid container direction="column" className={classes.mainContainer}> */}
+      <Head>
+        <title key="title">Barley Cottage Bakery</title>
+        <meta
+          property="og:title"
+          key="og:title"
+          content="Title for sharing link here | Barley Cottage Bakery"
+        ></meta>
+        <meta
+          property="og:url"
+          key="og:url"
+          content="barleycottage.co.uk"
+        ></meta>
+        {/* ensures http https and www all point to one page for SEO */}
+        <link
+          rel="canonical"
+          key="canonical"
+          href="https://barleycottage.co.uk"
+        ></link>
+      </Head>
 
-        <Grid item>
+      {/* <Grid item>
           <Grid
             container
             justify="flex-end"
@@ -135,35 +135,17 @@ export default function LandingPage(props) {
             alignItems="center"
           >
             <Grid xs item className={classes.heroTextContainer}>
-              <Typography align="center" variant="h1">
-                barley cottage bakery <br /> slogan
+              <Typography align="center" variant="h1" color="red">
+                barley cottage bakery
               </Typography>
               <Grid
                 container
                 justify="center"
                 alignItems="center"
                 className={classes.buttonContainer}
-              >
-                {/* <Grid item>
-                  <Button variant="contained" className={classes.orderButton}>
-                    order
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" className={classes.moreButtonHero}>
-                    <span style={{ marginRight: 10 }}>more</span>
-                    <ButtonArrow
-                      width={15}
-                      height={15}
-                      fill={theme.palette.common.darkBlue}
-                    />
-                  </Button>
-                </Grid> */}
-              </Grid>
+              ></Grid>
             </Grid>
-            {/* <Grid sm item className={classes.animation}>
-              <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
-            </Grid> */}
+
             <Grid sm item container className={classes.heroTextRight}>
               <Grid sm item>
                 <Typography variant="h2">
@@ -173,7 +155,7 @@ export default function LandingPage(props) {
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </Grid> */}
       {/* SLOGAN CONTAINER END */}
 
       <LandingPageButtons />
@@ -222,3 +204,9 @@ export default function LandingPage(props) {
 //     </Grid>
 //   </Grid>
 // </Grid>
+
+{
+  /* <Grid sm item className={classes.animation}>
+              <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+            </Grid> */
+}

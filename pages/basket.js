@@ -197,7 +197,7 @@ export default function Basket() {
         spacing={0}
         // alignItems="center"
       >
-        <Grid item xs md={6}>
+        <Grid item xs={12} md={6}>
           <Box
             // style={{ ...theme.mixins.gutters(), width: "100%" }}
             display="flex"
@@ -216,13 +216,25 @@ export default function Basket() {
             {shopItems}
           </Box>
         </Grid>
-        <Grid item xs sm md={6}>
+        <Grid item xs={12} sm md={6}>
           <Box
+            // style={{ ...theme.mixins.gutters(), width: "100%" }}
+            display="flex"
+            justify="space-between"
+            justifyContent="space-between"
+            flexDirection="column"
             style={{
               padding: matchesXS ? 0 : 25,
               marginTop: matchesXS ? 25 : 0,
             }}
           >
+            <Typography variant="h1" component="h1">
+              Checkout
+            </Typography>
+            <Box mr={6} mb={2}>
+              <img width={100} src="/assets/doodles/underline-hash.svg" />
+            </Box>
+
             <StepperForm />
           </Box>
         </Grid>

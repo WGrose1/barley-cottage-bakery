@@ -78,7 +78,7 @@ export default function Footer(props) {
         </Grid>
         <Hidden smDown>
           <Grid item sm md={5} container justify="center">
-            <Grid item className={classes.gridItem}>
+            {/* <Grid item className={classes.gridItem}>
               <Grid container direction="column">
                 <Grid
                   item
@@ -103,8 +103,8 @@ export default function Footer(props) {
                   bakes
                 </Grid>
               </Grid>
-            </Grid>
-            <Grid item className={classes.gridItem}>
+            </Grid> */}
+            {/* <Grid item className={classes.gridItem}>
               <Grid container direction="column" spacing={2}>
                 <Grid
                   item
@@ -116,7 +116,7 @@ export default function Footer(props) {
                   delivery
                 </Grid>
               </Grid>
-            </Grid>
+            </Grid> */}
             {/* <Grid item className={classes.gridItem}>
               <Grid container direction="column" spacing={1}>
                 <Grid
