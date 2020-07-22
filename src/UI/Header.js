@@ -22,7 +22,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from "@material-ui/icons/Menu";
 import Box from "@material-ui/core/Box";
 import { useSpring, animated } from "react-spring";
-
+import ReactGA from "react-ga";
 import { useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 
@@ -179,18 +179,9 @@ export default function Header(props) {
   const [openMenu, setOpenMenu] = useState(false);
   const [toggleBasketAnim, setToggleBasketAnim] = useState(false);
 
+  const [previousURL, setPreviousURL] = useState("");
+
   const basketTotalAmount = useSelector((state) => state.basket.totalAmount);
-
-  useEffect(() => {
-    if (basketTotalAmount > 0) {
-      console.log("animating");
-      setToggleBasketAnim(true);
-    }
-  }, [basketTotalAmount]);
-
-  useEffect(() => {
-    console.log("toggleBasketAnim", toggleBasketAnim);
-  });
 
   const [basketCookie, setBasketCookie] = useState(undefined);
 
@@ -269,6 +260,12 @@ export default function Header(props) {
   }, []);
 
   useEffect(() => {
+    if (previousURL !== window.location.pathname) {
+      setPreviousURL(window.location.pathname);
+      console.log("Pageview");
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
     [...menuOptions, ...routes].forEach((route) => {
       switch (window.location.pathname) {
         case `${route.link}`:
@@ -541,8 +538,8 @@ export default function Header(props) {
                 <img width={mediumUp ? 150 : 70} src="/assets/logo1.svg" />
               </Button>
             </Box>
-            <Hidden smDown>{tabs}</Hidden>
-            <Hidden mdUp>
+            <Hidden xsDown>{tabs}</Hidden>
+            <Hidden smUp>
               <Box
                 display="flex"
                 alignItems="flex-end"
@@ -592,7 +589,7 @@ export default function Header(props) {
                 />
               </Box>
             </Hidden>
-            <Hidden mdUp>{<Drawer />}</Hidden>
+            <Hidden smUp>{<Drawer />}</Hidden>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

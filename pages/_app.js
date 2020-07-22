@@ -15,6 +15,7 @@ import { firebase } from "../src/firebase/firebase";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { PersistGate } from "redux-persist/integration/react";
+import ReactGA from "react-ga";
 
 import { CookiesProvider } from "react-cookie";
 
@@ -24,14 +25,12 @@ const stripePromise = loadStripe(
   "pk_test_51GulktI1HACdLbtz8EKaiiaCuJwB5sGU7ycIuqMBnBixEngtVUDyv6S1xK0rosr4BegFAWHptYsdrVcwjqrC69JJ00cnKEDkrq"
 );
 
+ReactGA.initialize("UA-145041426-3");
+
 export default function MyApp(props) {
   const { Component, pageProps } = props;
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [tabIndex, setTabIndex] = useState(0);
-
-  useEffect(() => {
-    console.log("tabIndex", tabIndex);
-  }, [tabIndex]);
 
   // static async getInitialProps({ Component, ctx }) {
   //     return {

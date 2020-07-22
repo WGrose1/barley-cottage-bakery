@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sweettreated.co.uk/about</loc>
-    <lastmod>2020-06-06</lastmod>
+    <loc>https://barleycottage.co.uk/404</loc>
+    <lastmod>2020-06-13</lastmod>
   </url>,<url>
-    <loc>https://sweettreated.co.uk/bakes</loc>
-    <lastmod>2020-06-07</lastmod>
+    <loc>https://barleycottage.co.uk/about</loc>
+    <lastmod>2020-07-13</lastmod>
   </url>,<url>
-    <loc>https://sweettreated.co.uk</loc>
-    <lastmod>2020-06-07</lastmod>
+    <loc>https://barleycottage.co.uk/bakes</loc>
+    <lastmod>2020-07-21</lastmod>
+  </url>,<url>
+    <loc>https://barleycottage.co.uk/basket</loc>
+    <lastmod>2020-07-22</lastmod>
+  </url>,<url>
+    <loc>https://barleycottage.co.uk/browniebuilder</loc>
+    <lastmod>2020-07-13</lastmod>
+  </url>,<url>
+    <loc>https://barleycottage.co.uk/catering</loc>
+    <lastmod>2020-07-13</lastmod>
+  </url>,<url>
+    <loc>https://barleycottage.co.uk/delivery</loc>
+    <lastmod>2020-07-13</lastmod>
+  </url>,<url>
+    <loc>https://barleycottage.co.uk</loc>
+    <lastmod>2020-07-21</lastmod>
   </url>
 </urlset>

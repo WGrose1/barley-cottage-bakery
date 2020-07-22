@@ -132,8 +132,8 @@ export default function Bakes(props) {
       justify="space-between"
     >
       {bakeItems.map((item, index) => (
-        <Grid item xs={12} sm={6} md={4}>
-          <BakeItem key={`${item}${index}`} item={item} />
+        <Grid key={`${item}${index}`} item xs={12} sm={6} md={4}>
+          <BakeItem item={item} />
         </Grid>
       ))}
     </Grid>

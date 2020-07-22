@@ -134,7 +134,7 @@ export default function Basket() {
               spacing={0}
               xs={12}
               md={4}
-              noWrap
+
               // justify={matchesMd ? "flex-start" : "space-between"}
 
               // className={classes.marginLeft}
@@ -145,10 +145,6 @@ export default function Basket() {
                   style={{ zmarginLeft: 50 }}
                   onClick={() => {
                     dispatch(basketActions.removeItem(item.productId));
-                    if (typeof persistor != "undefined") {
-                      console.log("persistor", persistor);
-                      console.log("state", persistor.getState());
-                    }
                   }}
                 >
                   Remove

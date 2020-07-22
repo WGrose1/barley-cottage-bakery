@@ -30,7 +30,6 @@ const rootReducer = combineReducers({
 });
 
 if (isClient) {
-  console.log("Persistant");
   // const { persistReducer } = require("redux-persist");
   // const storage = require("redux-persist/lib/storage").default;
 

@@ -106,36 +106,36 @@ export default function LandingPage(props) {
         src="/assets/brownie-landing-page.jpg"
       /> */}
       {/* SLOGAN CONTAINER START */}
-      {/* <Grid container direction="column" className={classes.mainContainer}> */}
-      <Head>
-        <title key="title">Barley Cottage Bakery</title>
-        <meta
-          property="og:title"
-          key="og:title"
-          content="Title for sharing link here | Barley Cottage Bakery"
-        ></meta>
-        <meta
-          property="og:url"
-          key="og:url"
-          content="barleycottage.co.uk"
-        ></meta>
-        {/* ensures http https and www all point to one page for SEO */}
-        <link
-          rel="canonical"
-          key="canonical"
-          href="https://barleycottage.co.uk"
-        ></link>
-      </Head>
+      <Grid container direction="column" className={classes.mainContainer}>
+        <Head>
+          <title key="title">Barley Cottage Bakery</title>
+          <meta
+            property="og:title"
+            key="og:title"
+            content="Title for sharing link here | Barley Cottage Bakery"
+          ></meta>
+          <meta
+            property="og:url"
+            key="og:url"
+            content="barleycottage.co.uk"
+          ></meta>
+          {/* ensures http https and www all point to one page for SEO */}
+          <link
+            rel="canonical"
+            key="canonical"
+            href="https://barleycottage.co.uk"
+          ></link>
+        </Head>
 
-      {/* <Grid item>
+        <Grid item>
           <Grid
             container
-            justify="flex-end"
-            direction="row"
+            justify="flex-start"
+            direction="column"
             alignItems="center"
           >
             <Grid xs item className={classes.heroTextContainer}>
-              <Typography align="center" variant="h1" color="red">
+              <Typography align="center" variant="h1">
                 barley cottage bakery
               </Typography>
               <Grid
@@ -148,14 +148,14 @@ export default function LandingPage(props) {
 
             <Grid sm item container className={classes.heroTextRight}>
               <Grid sm item>
-                <Typography variant="h2">
-                  freshly baked from our home to yours
+                <Typography variant="h5">
+                  luxury baked treats from our home to yours
                 </Typography>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid> */}
+      </Grid>
       {/* SLOGAN CONTAINER END */}
 
       <LandingPageButtons />

@@ -113,7 +113,7 @@ const PaymentForm = (props) => {
   return (
     <form
       onSubmit={(e) => {
-        handleSubmitTest(e);
+        handleSubmit(e);
       }}
     >
       <Box display="flex" flexDirection="column" alignItems="flex-start">

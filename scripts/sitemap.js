@@ -4,7 +4,7 @@ const formatDate = require("./formatDate");
 
 // ROBOTS.txt
 const robotsTxt = `User-agent: *
-Sitemap: https://sweettreated.co.uk/sitemap_local.xml
+Sitemap: https://barleycottage.co.uk/sitemap_local.xml
 Disallow:`;
 
 fs.writeFileSync("public/robots.txt", robotsTxt);
@@ -16,14 +16,17 @@ const today = formatDate(new Date());
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${Object.keys(pathsObj)
-    .filter((path) => path !== "/_document" && path !== "/_app")
+    .filter(
+      (path) =>
+        path !== "/_document" && path !== "/_app" && !path.includes("/api")
+    )
 
     .map(
       (path) => `<url>
     ${
       path === "/index"
-        ? `<loc>https://sweettreated.co.uk</loc>`
-        : `<loc>https://sweettreated.co.uk${path}</loc>`
+        ? `<loc>https://barleycottage.co.uk</loc>`
+        : `<loc>https://barleycottage.co.uk${path}</loc>`
     }
     <lastmod>${
       pathsObj[path].lastModified

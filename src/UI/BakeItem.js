@@ -14,6 +14,7 @@ import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import Product from "../models/Product";
+import ReactGA from "react-ga";
 
 import * as basketActions from "../store/Actions/basketActions";
 
@@ -70,10 +71,10 @@ const BakeItem = (props) => {
         className={classes.gridItem}
         container
         item
-        spacing={1}
+        spacing={3}
         xs
         // sm={6}
-        // md
+
         // lg={3}
 
         justify="center"
@@ -88,7 +89,6 @@ const BakeItem = (props) => {
           />
         </Grid>
         <Grid
-          sm
           item
           container
           direction="column"
@@ -154,7 +154,13 @@ const BakeItem = (props) => {
               <Button
                 className={classes.addToBasketBtn}
                 variant="outlined"
-                onClick={handleAddToBasket}
+                onClick={() => {
+                  ReactGA.event({
+                    category: "BakeItem",
+                    action: "Item addedto basket",
+                  });
+                  handleAddToBasket();
+                }}
               >
                 Add to basket
               </Button>
