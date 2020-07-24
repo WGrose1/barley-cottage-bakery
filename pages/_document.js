@@ -45,7 +45,7 @@ export default class MyDocument extends Document {
           style={{
             margin: 0,
             zIndex: -9999,
-            backgroundImage: "url(/assets/bb2.jpg)",
+            backgroundImage: "url(/assets/bb2_original.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
