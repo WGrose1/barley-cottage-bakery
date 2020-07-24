@@ -45,12 +45,12 @@ export default function Catering() {
         <meta
           property="og:url"
           key="og:url"
-          content="sweettreated.co.uk/catering"
+          content="barleycottage.co.uk/catering"
         />
         <link
           rel="canonical"
           key="canonical"
-          href="https://sweettreated.com/catering"
+          href="https://barleycottage.com/catering"
         ></link>
       </Head>
       <TopMargin />

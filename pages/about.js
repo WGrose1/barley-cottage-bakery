@@ -45,12 +45,12 @@ export default function About() {
         <meta
           property="og:url"
           key="og:url"
-          content="sweettreated.co.uk/bakes"
+          content="barleycottage.co.uk/bakes"
         />
         <link
           rel="canonical"
           key="canonical"
-          href="https://sweettreated.com/bakes"
+          href="https://barleycottage.co.uk/bakes"
         ></link>
       </Head>
       <TopMargin />

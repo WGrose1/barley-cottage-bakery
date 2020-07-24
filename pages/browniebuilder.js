@@ -45,12 +45,12 @@ export default function BrownieBuilderPage() {
         <meta
           property="og:url"
           key="og:url"
-          content="sweettreated.co.uk/catering"
+          content="barleycottage.co.uk/browniebuilder"
         />
         <link
           rel="canonical"
           key="canonical"
-          href="https://sweettreated.com/catering"
+          href="https://barleycottage.co.uk/browniebuilder"
         ></link>
       </Head>
       <TopMargin />

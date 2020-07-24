@@ -31,7 +31,6 @@ if (!isClient) {
     // firebase.analytics().logEvent("notification_received");
     database = firebase.database();
     storage = firebase.storage();
-    console.log("database", database);
   }
 }
 

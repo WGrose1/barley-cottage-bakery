@@ -230,6 +230,7 @@ export default function Header(props) {
     { name: "home", link: "/", activeIndex: 0 },
     { name: "bakes", link: "/bakes", activeIndex: 1 },
     { name: "brownie builder", link: "/browniebuilder", activeIndex: 2 },
+    // { name: "blog", link: "/blog", activeIndex: 3 },
     // { name: "delivery", link: "/delivery", activeIndex: 3 },
     // { name: "our story", link: "/about", activeIndex: 4 },
     // { name: "catering", link: "/catering", activeIndex: 5 },
