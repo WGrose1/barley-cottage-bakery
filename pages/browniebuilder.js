@@ -85,6 +85,7 @@ export default function BrownieBuilderPage() {
                 Build your own brownie, coming soon...
               </Typography>
             </Box>
+            <Box height={500} px={8} mt={2}></Box>
           </Grid>
           <Grid item sm={12} md>
             <Box px={8} mt={2}>
