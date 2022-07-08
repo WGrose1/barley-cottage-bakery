@@ -25,7 +25,7 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "mailgun-js": "^0.22.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "next": "^9.4.4",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.1",
